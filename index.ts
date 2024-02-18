@@ -23,51 +23,96 @@
 
 
 // RETO 2:
-interface Role {
-    id: number
-    name: string
-}
+// interface Role {
+//     id: number
+//     name: string
+// }
 
-const UserRoles: { [key: string]: Role } = {
-    ADMIN: { id: 1, name: "admin" },
-    MANAGER: { id: 2, name: "manager" },
-    USER: { id: 3, name: "user" },
-}
+// const UserRoles: { [key: string]: Role } = {
+//     ADMIN: { id: 1, name: "admin" },
+//     MANAGER: { id: 2, name: "manager" },
+//     USER: { id: 3, name: "user" },
+// }
 
-const roleName = "admin"
+// const roleName = "admin"
 
 // option 1 (by Pedro - called by the object name, not the object property)
-const getRoleFromRoleName = (roleName: string): Role | undefined => {
-
-    let result = UserRoles[roleName] !== undefined ? UserRoles[roleName] : undefined
-    return result
-
-}
-console.log(getRoleFromRoleName("ADMIN"))
+// const getRoleFromRoleName = (roleName: string): Role | undefined => {
+//     let result = UserRoles[roleName] !== undefined ? UserRoles[roleName] : undefined
+//     return result
+// }
+// console.log(getRoleFromRoleName("ADMIN"))
 
 // option 2 (by Javi - returns a string instead of an object)
-const getRoleFromRoleName2 = (roleName: string): string => {
-    for (const [key, Role] of Object.entries(UserRoles)) {
-        if (roleName === Role.name) {
-            return `{ id: ${Role.id}, name: '${Role.name}' }`
-        }
-    }
-    return "NOK"
-}
-console.log(getRoleFromRoleName2("admin"))
+// const getRoleFromRoleName2 = (roleName: string): string => {
+//     for (const [key, Role] of Object.entries(UserRoles)) {
+//         if (roleName === Role.name) {
+//             return `{ id: ${Role.id}, name: '${Role.name}' }`
+//         }}
+//     return "NOK"
+// }
+// console.log(getRoleFromRoleName2("admin"))
 
 // option 3 _BEST_(by David - desestructurized 'object entries')
-const getRoleFromRoleName3 = (roleName: string) => {
-    Object.entries(UserRoles).map(
-        ([_, valor], i) => {
-            if (valor.name == roleName) {
-                console.log(valor)
-            }
-            return valor
-        }
-    )
-}
-getRoleFromRoleName3(roleName)
+// const getRoleFromRoleName3 = (roleName: string) => {
+//     Object.entries(UserRoles).map(
+//         ([_, valor], i) => {
+//             if (valor.name == roleName) {
+//                 console.log(valor)
+//             }
+//             return valor
+//         })
+// }
+// getRoleFromRoleName3(roleName)
 
+
+// RETO 3:
+
+const largo = (cadena: string) => {
+    return (cadena.length >= 8) ? true : false
+}
+const mayuscula = (cadena: string) => {
+    let res = false
+    for (let ch of cadena) {
+        (ch >= 'A' && ch <= 'Z') ? res = true : false
+    }
+    return res
+}
+const minuscula = (cadena: string) => {
+    let res = false
+    for (let ch of cadena) {
+        (ch >= 'a' && ch <= 'z') ? res = true : false
+    }
+    return res
+}
+const numero = (cadena: string) => {
+    let res = false
+    for (let ch of cadena) {
+        (!isNaN(parseInt(ch))) ? res = true : false
+    }
+    return res
+}
+const especial = (cadena: string) => {
+    let lista = ["@", "$", "!", "%", "*", "?", "&"]
+    let res = false
+    for (let ch of cadena) {
+        for (let i of lista) {
+            (ch == i) ? res = true : false
+        }
+    }
+    return res
+}
+
+const validarContraseña = (cadena: string) => {
+    const la = largo(cadena)
+    const ma = mayuscula(cadena)
+    const mi = minuscula(cadena)
+    const nu = numero(cadena)
+    const es = especial(cadena)
+    // console.log(la, ma, mi, nu, es)
+    return (la && ma && mi && nu && es) ? "contraseña correcta" : "contraseña incorrecta"
+}
+
+console.log(validarContraseña("Sergio@2"))
 
 
