@@ -68,51 +68,75 @@
 
 // RETO 3:
 
-const largo = (cadena: string) => {
-    return (cadena.length >= 8) ? true : false
+// const largo = (cadena: string) => {
+//     return (cadena.length >= 8) ? true : false
+// }
+// const mayuscula = (cadena: string) => {
+//     let res = false
+//     for (let ch of cadena) {
+//         (ch >= 'A' && ch <= 'Z') ? res = true : false
+//     }
+//     return res
+// }
+// const minuscula = (cadena: string) => {
+//     let res = false
+//     for (let ch of cadena) {
+//         (ch >= 'a' && ch <= 'z') ? res = true : false
+//     }
+//     return res
+// }
+// const numero = (cadena: string) => {
+//     let res = false
+//     for (let ch of cadena) {
+//         (!isNaN(parseInt(ch))) ? res = true : false
+//     }
+//     return res
+// }
+// const especial = (cadena: string) => {
+//     let lista = ["@", "$", "!", "%", "*", "?", "&"]
+//     let res = false
+//     for (let ch of cadena) {
+//         for (let i of lista) {
+//             (ch == i) ? res = true : false
+//         }
+//     }
+//     return res
+// }
+
+// const validarContraseña = (cadena: string) => {
+//     const la = largo(cadena)
+//     const ma = mayuscula(cadena)
+//     const mi = minuscula(cadena)
+//     const nu = numero(cadena)
+//     const es = especial(cadena)
+//     // console.log(la, ma, mi, nu, es)
+//     return (la && ma && mi && nu && es) ? "contraseña correcta" : "contraseña incorrecta"
+// }
+
+// console.log(validarContraseña("Sergio@2"))
+
+
+// RETO 4:
+interface matriz {
+    m1: number[][]
+    m2: number[][]
 }
-const mayuscula = (cadena: string) => {
-    let res = false
-    for (let ch of cadena) {
-        (ch >= 'A' && ch <= 'Z') ? res = true : false
+
+const m1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+const m2 = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+
+const m3: number[][] = [];
+const sumarMatrices = ({ m1, m2 }: matriz): number[][] => {
+    if (m1.length !== m2.length || m1[0].length !== m2[0].length) {
+        throw new Error('Las matrices no tienen las dimensiones para poder realizar la suma')
     }
-    return res
-}
-const minuscula = (cadena: string) => {
-    let res = false
-    for (let ch of cadena) {
-        (ch >= 'a' && ch <= 'z') ? res = true : false
-    }
-    return res
-}
-const numero = (cadena: string) => {
-    let res = false
-    for (let ch of cadena) {
-        (!isNaN(parseInt(ch))) ? res = true : false
-    }
-    return res
-}
-const especial = (cadena: string) => {
-    let lista = ["@", "$", "!", "%", "*", "?", "&"]
-    let res = false
-    for (let ch of cadena) {
-        for (let i of lista) {
-            (ch == i) ? res = true : false
+    for (let i = 0; i < m1.length; i++) {
+        m3[i] = [];
+        for (let j = 0; j < m1[0].length; j++) {
+            m3[i][j] = m1[i][j] + m2[i][j]
         }
     }
-    return res
+    return m3
 }
-
-const validarContraseña = (cadena: string) => {
-    const la = largo(cadena)
-    const ma = mayuscula(cadena)
-    const mi = minuscula(cadena)
-    const nu = numero(cadena)
-    const es = especial(cadena)
-    // console.log(la, ma, mi, nu, es)
-    return (la && ma && mi && nu && es) ? "contraseña correcta" : "contraseña incorrecta"
-}
-
-console.log(validarContraseña("Sergio@2"))
-
+console.log(sumarMatrices({ m1, m2 }))
 
