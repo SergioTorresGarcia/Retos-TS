@@ -117,26 +117,63 @@
 
 
 // RETO 4:
-interface matriz {
-    m1: number[][]
-    m2: number[][]
+// interface matriz {
+//     m1: number[][]
+//     m2: number[][]
+// }
+
+// const m1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+// const m2 = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+
+// const m3: number[][] = [];
+// const sumarMatrices = ({ m1, m2 }: matriz): number[][] => {
+//     if (m1.length !== m2.length || m1[0].length !== m2[0].length) {
+//         throw new Error('Las matrices no tienen las dimensiones para poder realizar la suma')
+//     }
+//     for (let i = 0; i < m1.length; i++) {
+//         m3[i] = [];
+//         for (let j = 0; j < m1[0].length; j++) {
+//             m3[i][j] = m1[i][j] + m2[i][j]
+//         }
+//     }
+//     return m3
+// }
+// console.log(sumarMatrices({ m1, m2 }))
+
+
+//RETO 5:
+let pswrd: string = ""
+
+const lista: string = '@$!%*?&'
+const bigLetters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const smallLetters: string = 'abcdefghijklmnopqrstuvwxyz'
+const all: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&'
+
+const generarContraseña = (long: number): string => {
+    if (long < 4) {
+        throw new Error("La contraseña no puede tener menos de 4 caracteres")
+    }
+    let posicion1: number = Math.floor(Math.random() * lista.length)
+    pswrd += lista[posicion1] // at least one special character
+
+    let posicion2: number = Math.floor(Math.random() * bigLetters.length)
+    pswrd += bigLetters[posicion2] // at least one big letter
+
+    let posicion3: number = Math.floor(Math.random() * smallLetters.length)
+    pswrd += smallLetters[posicion3] // at least one small letter
+
+    pswrd += Math.floor(Math.random() * 10) // at least one number
+
+    while (pswrd.length < long) {
+        let posicion: number = Math.floor(Math.random() * all.length)
+        pswrd += all[posicion] // fill up till desired length with random from all type characters
+    }
+    // all characters added to the result, are shuffled 
+    // as an array, it gets sorted in a random manner, then gets put back to string
+    // to ensure randomness, '-0.5' keeps random number going up and down randomly
+    let shuffle = Array.from(pswrd).sort(() => Math.random() - 0.5).join('')
+    return shuffle
 }
 
-const m1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-const m2 = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
-
-const m3: number[][] = [];
-const sumarMatrices = ({ m1, m2 }: matriz): number[][] => {
-    if (m1.length !== m2.length || m1[0].length !== m2[0].length) {
-        throw new Error('Las matrices no tienen las dimensiones para poder realizar la suma')
-    }
-    for (let i = 0; i < m1.length; i++) {
-        m3[i] = [];
-        for (let j = 0; j < m1[0].length; j++) {
-            m3[i][j] = m1[i][j] + m2[i][j]
-        }
-    }
-    return m3
-}
-console.log(sumarMatrices({ m1, m2 }))
+console.log(generarContraseña(7))
 
