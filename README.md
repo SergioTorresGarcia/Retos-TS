@@ -15,7 +15,6 @@ de un rol como una cadena y devuelva el objeto de rol correspondiente desde un c
 El conjunto de roles se define como sigue:
 <!-- IMAGE -->
 Obtener Rol por Nombre desde un Conjunto Predefinido en TypeScript
-
 La función getRoleFromRoleName debe buscar el rol por su nombre dentro del conjunto predefinido y devolver el objeto de rol si se encuentra una coincidencia, o undefined si no se encuentra ninguna coincidencia.
 Uso de Ejemplo:
 const roleName = "admin";
@@ -37,7 +36,6 @@ La función debe devolver true si la contraseña cumple con todos los criterios 
 #### RETO 4:
 Operaciones con Matrices:
 Escribe una función llamada sumarMatrices que tome dos matrices como argumentos y devuelva una nueva matriz que sea el resultado de la suma de las dos matrices de entrada.
-
 Asegúrate de manejar correctamente los casos en los que las matrices no tengan las mismas
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.
@@ -47,9 +45,9 @@ Generación de Contraseñas Aleatorias:
 Escribe una función llamada generarContraseña que tome un parámetro longitud de tipo
 number y devuelva una cadena aleatoria de esa longitud que cumpla con los siguientes
 requisitos:
-● Debe contener una combinación de letras mayúsculas y minúsculas.
-● Debe contener al menos un número.
-● Debe contener al menos un carácter especial de la siguiente lista: !@#$%^&*.
+- Debe contener una combinación de letras mayúsculas y minúsculas.
+- Debe contener al menos un número.
+- Debe contener al menos un carácter especial de la siguiente lista: !@#$%^&*.
 
 #### RETO 6:
 Validación de Direcciones de Correo Electrónico:
