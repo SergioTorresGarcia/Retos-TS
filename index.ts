@@ -142,38 +142,68 @@
 
 
 //RETO 5:
-let pswrd: string = ""
+// let pswrd: string = ""
 
-const lista: string = '@$!%*?&'
-const bigLetters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const smallLetters: string = 'abcdefghijklmnopqrstuvwxyz'
-const all: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&'
+// const lista: string = '@$!%*?&'
+// const bigLetters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+// const smallLetters: string = 'abcdefghijklmnopqrstuvwxyz'
+// const all: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@$!%*?&'
 
-const generarContraseña = (long: number): string => {
-    if (long < 4) {
-        throw new Error("La contraseña no puede tener menos de 4 caracteres")
+// const generarContraseña = (long: number): string => {
+//     if (long < 4) {
+//         throw new Error("La contraseña no puede tener menos de 4 caracteres")
+//     }
+//     let posicion1: number = Math.floor(Math.random() * lista.length)
+//     pswrd += lista[posicion1] // at least one special character
+
+//     let posicion2: number = Math.floor(Math.random() * bigLetters.length)
+//     pswrd += bigLetters[posicion2] // at least one big letter
+
+//     let posicion3: number = Math.floor(Math.random() * smallLetters.length)
+//     pswrd += smallLetters[posicion3] // at least one small letter
+
+//     pswrd += Math.floor(Math.random() * 10) // at least one number
+
+//     while (pswrd.length < long) {
+//         let posicion: number = Math.floor(Math.random() * all.length)
+//         pswrd += all[posicion] // fill up till desired length with random from all type characters
+//     }
+//     // all characters added to the result, are shuffled 
+//     // as an array, it gets sorted in a random manner, then gets put back to string
+//     // to ensure randomness, '-0.5' keeps random number going up and down randomly
+//     let shuffle = Array.from(pswrd).sort(() => Math.random() - 0.5).join('')
+//     return shuffle
+// }
+
+// console.log(generarContraseña(7))
+
+
+// RETO 6:
+let arr: string = 'a.sergiotorres@gmail.com'
+let res: boolean
+const validarCorreoElectronico = (arr: string): boolean => {
+
+    let parts: string[] = arr.split("@")
+    let [izq, der] = parts
+
+    if (parts.length !== 2) { // si es 1, es porque no hay @, y si es más de 2, hay más de una @
+        return false
     }
-    let posicion1: number = Math.floor(Math.random() * lista.length)
-    pswrd += lista[posicion1] // at least one special character
-
-    let posicion2: number = Math.floor(Math.random() * bigLetters.length)
-    pswrd += bigLetters[posicion2] // at least one big letter
-
-    let posicion3: number = Math.floor(Math.random() * smallLetters.length)
-    pswrd += smallLetters[posicion3] // at least one small letter
-
-    pswrd += Math.floor(Math.random() * 10) // at least one number
-
-    while (pswrd.length < long) {
-        let posicion: number = Math.floor(Math.random() * all.length)
-        pswrd += all[posicion] // fill up till desired length with random from all type characters
+    if (izq.includes(' ') || der.includes(' ')) { // nos aseguramos de que no hay espacios
+        return false
     }
-    // all characters added to the result, are shuffled 
-    // as an array, it gets sorted in a random manner, then gets put back to string
-    // to ensure randomness, '-0.5' keeps random number going up and down randomly
-    let shuffle = Array.from(pswrd).sort(() => Math.random() - 0.5).join('')
-    return shuffle
+    if (!der.includes('.')) { // nos aseguramos de que hay un piunto a la derecha
+        return false
+    }
+    if (Array.from(der)[0] == '.' || Array.from(der)[der.length - 1] == '.') {
+        return false  // pero que no esté ni pegado a la @ ni al final
+    }
+    for (let e of arr) {
+        res = ((e >= 'a' && e <= 'z') || (e >= '0' && e <= '9') || e == "@" || e == "." || e == "-" || e == "_") ? true : false
+    }
+    console.log("la dirección de correo es correcta");
+
+    return res
 }
 
-console.log(generarContraseña(7))
-
+console.log(validarCorreoElectronico(arr));
