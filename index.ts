@@ -179,31 +179,44 @@
 
 
 // RETO 6:
-let arr: string = 'a.sergiotorres@gmail.com'
-let res: boolean
-const validarCorreoElectronico = (arr: string): boolean => {
+// let arr: string = 'a.sergiotorres@gmail.com'
+// let res: boolean
+// const validarCorreoElectronico = (arr: string): boolean => {
 
-    let parts: string[] = arr.split("@")
-    let [izq, der] = parts
+//     let parts: string[] = arr.split("@")
+//     let [izq, der] = parts
 
-    if (parts.length !== 2) { // si es 1, es porque no hay @, y si es más de 2, hay más de una @
-        return false
-    }
-    if (izq.includes(' ') || der.includes(' ')) { // nos aseguramos de que no hay espacios
-        return false
-    }
-    if (!der.includes('.')) { // nos aseguramos de que hay un piunto a la derecha
-        return false
-    }
-    if (Array.from(der)[0] == '.' || Array.from(der)[der.length - 1] == '.') {
-        return false  // pero que no esté ni pegado a la @ ni al final
-    }
-    for (let e of arr) {
-        res = ((e >= 'a' && e <= 'z') || (e >= '0' && e <= '9') || e == "@" || e == "." || e == "-" || e == "_") ? true : false
-    }
-    console.log("la dirección de correo es correcta");
+//     if (parts.length !== 2) { // si es 1, es porque no hay @, y si es más de 2, hay más de una @
+//         return false
+//     }
+//     if (izq.includes(' ') || der.includes(' ')) { // nos aseguramos de que no hay espacios
+//         return false
+//     }
+//     if (!der.includes('.')) { // nos aseguramos de que hay un piunto a la derecha
+//         return false
+//     }
+//     if (Array.from(der)[0] == '.' || Array.from(der)[der.length - 1] == '.') {
+//         return false  // pero que no esté ni pegado a la @ ni al final
+//     }
+//     for (let e of arr) {
+//         res = ((e >= 'a' && e <= 'z') || (e >= '0' && e <= '9') || e == "@" || e == "." || e == "-" || e == "_") ? true : false
+//     }
+//     console.log("la dirección de correo es correcta");
 
-    return res
+//     return res
+// }
+
+// console.log(validarCorreoElectronico(arr));
+
+
+// RETO 7:
+let result: string = ""
+const alfabeto: string = "abcdefghijklmnopqrstuvwxyz"
+
+const cifradoCesar = (texto: string, numero: number): string => {
+
+    return result
 }
 
-console.log(validarCorreoElectronico(arr));
+console.log(cifradoCesar("Hola me llamo Sergio", 2));
+
