@@ -236,29 +236,43 @@
 
 // RETO 8:
 
-const palos = ['Corazones', 'Diamantes', 'Tréboles', 'Picas']
-const valores = ['As', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jota', 'Reina', 'Rey']
+// const palos = ['Corazones', 'Diamantes', 'Tréboles', 'Picas']
+// const valores = ['As', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jota', 'Reina', 'Rey']
 
-const mazo = []
+// const mazo = []
 
-// position 3
-for (let i = 0; i < valores.length; i++) {
-    for (let j = 0; j < palos.length; j++) {
-        mazo.push(`${valores[i]} de ${palos[j]}`)
-    }
-}
-console.log(mazo)
+// // position 3
+// for (let i = 0; i < valores.length; i++) {
+//     for (let j = 0; j < palos.length; j++) {
+//         mazo.push(`${valores[i]} de ${palos[j]}`)
+//     }
+// }
+// console.log(mazo)
 
-// position 4
-const barajar = (arr: string[]) => {
-    return arr.sort(() => Math.random() - 0.5)
-}
-console.log(barajar(mazo))
+// // position 4
+// const barajar = (arr: string[]) => {
+//     return arr.sort(() => Math.random() - 0.5)
+// }
+// console.log(barajar(mazo))
 
-// position 5
-const carta = (arr: string[]): string => {
+// // position 5
+// const carta = (arr: string[]): string => {
+//     let pos = Math.floor(Math.random() * (arr.length))
+//     let carta = arr[pos]
+//     return carta
+// }
+// console.log("Aquí tienes una carta aleatoria del mazo:", carta(mazo))
+
+
+// RETO 9:
+
+const authors = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown"]
+
+const getRandomValueFromArray = (arr: string[]): string => {
     let pos = Math.floor(Math.random() * (arr.length))
-    let carta = arr[pos]
-    return carta
+    let value = arr[pos]
+    return value
 }
-console.log("Aquí tienes una carta aleatoria del mazo:", carta(mazo))
+
+const randomAuthor = getRandomValueFromArray(authors)
+console.log("Autor Aleatorio:", randomAuthor)
