@@ -210,26 +210,55 @@
 
 
 // RETO 7:
-const alfabeto: string = "abcdefghijklmnopqrstuvwxyz"
-let result: string = ""
+// const alfabeto: string = "abcdefghijklmnopqrstuvwxyz"
+// let result: string = ""
 
-const cifradoCesar = (texto: string, numero: number): string => {
-    for (let i = 0; i < texto.length; i++) {
-        let ch = texto[i].toLowerCase()
+// const cifradoCesar = (texto: string, numero: number): string => {
+//     for (let i = 0; i < texto.length; i++) {
+//         let ch = texto[i].toLowerCase()
 
-        if (alfabeto.includes(ch)) {
-            let oldIndex = alfabeto.indexOf(ch)
-            let newIndex = (oldIndex + numero) % alfabeto.length
-            let newCH = alfabeto[newIndex]
+//         if (alfabeto.includes(ch)) {
+//             let oldIndex = alfabeto.indexOf(ch)
+//             let newIndex = (oldIndex + numero) % alfabeto.length
+//             let newCH = alfabeto[newIndex]
 
-            result += newCH
-        } else {
-            result += ch
-        }
+//             result += newCH
+//         } else {
+//             result += ch
+//         }
+//     }
+
+//     return result
+// }
+
+// console.log(cifradoCesar("Hola me llamo Sergio", 2));
+
+
+// RETO 8:
+
+const palos = ['Corazones', 'Diamantes', 'Tréboles', 'Picas']
+const valores = ['As', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jota', 'Reina', 'Rey']
+
+const mazo = []
+
+// position 3
+for (let i = 0; i < valores.length; i++) {
+    for (let j = 0; j < palos.length; j++) {
+        mazo.push(`${valores[i]} de ${palos[j]}`)
     }
-
-    return result
 }
+console.log(mazo)
 
-console.log(cifradoCesar("Hola me llamo Sergio", 2));
+// position 4
+const barajar = (arr: string[]) => {
+    return arr.sort(() => Math.random() - 0.5)
+}
+console.log(barajar(mazo))
 
+// position 5
+const carta = (arr: string[]): string => {
+    let pos = Math.floor(Math.random() * (arr.length))
+    let carta = arr[pos]
+    return carta
+}
+console.log("Aquí tienes una carta aleatoria del mazo:", carta(mazo))
