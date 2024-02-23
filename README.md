@@ -63,8 +63,8 @@ electrónico válida y false en caso contrario.
 
 #### RETO 7:
 Cifrado César:
-Escribe una función llamada cifradoCesar que tome dos parámetros: una cadena de texto y un
-número que represente el desplazamiento del cifrado César. La función debe cifrar la cadena de texto
+Escribe una función llamada cifradoCesar que tome dos parámetros: una cadena de texto y un número que represente el desplazamiento del cifrado César. 
+La función debe cifrar la cadena de texto
 utilizando el cifrado César con el desplazamiento especificado y devolver la cadena cifrada. El cifrado
 César consiste en desplazar cada letra en el alfabeto un número fijo de posiciones hacia la derecha. Si
 la letra alcanza el final del alfabeto, continúa desde el principio. Los números y otros caracteres no

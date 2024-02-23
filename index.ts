@@ -210,10 +210,23 @@
 
 
 // RETO 7:
-let result: string = ""
 const alfabeto: string = "abcdefghijklmnopqrstuvwxyz"
+let result: string = ""
 
 const cifradoCesar = (texto: string, numero: number): string => {
+    for (let i = 0; i < texto.length; i++) {
+        let ch = texto[i].toLowerCase()
+
+        if (alfabeto.includes(ch)) {
+            let oldIndex = alfabeto.indexOf(ch)
+            let newIndex = (oldIndex + numero) % alfabeto.length
+            let newCH = alfabeto[newIndex]
+
+            result += newCH
+        } else {
+            result += ch
+        }
+    }
 
     return result
 }
