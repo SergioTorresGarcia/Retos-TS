@@ -266,13 +266,28 @@
 
 // RETO 9:
 
-const authors = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown"]
+// const authors = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown"]
 
-const getRandomValueFromArray = (arr: string[]): string => {
-    let pos = Math.floor(Math.random() * (arr.length))
-    let value = arr[pos]
-    return value
+// const getRandomValueFromArray = (arr: string[]): string => {
+//     let pos = Math.floor(Math.random() * (arr.length))
+//     let value = arr[pos]
+//     return value
+// }
+
+// const randomAuthor = getRandomValueFromArray(authors)
+// console.log("Autor Aleatorio:", randomAuthor)
+
+
+// RETO 10:
+
+const originalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const getRandomSubarray = (arr: number[], length: number): number[] => {
+    const shuffled = arr.sort(() => Math.random() - 0.5)
+    console.log(shuffled);
+
+    return shuffled.slice(0, length)
 }
 
-const randomAuthor = getRandomValueFromArray(authors)
-console.log("Autor Aleatorio:", randomAuthor)
+const randomSubarray = getRandomSubarray(originalArray, 4);
+console.log("Subarreglo Aleatorio:", randomSubarray)
